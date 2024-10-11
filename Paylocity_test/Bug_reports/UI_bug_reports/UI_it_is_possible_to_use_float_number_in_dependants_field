@@ -1,0 +1,22 @@
+Priority: High
+Title: 
+    Fractional Numbers Can Be Entered in the Dependants Field in the UI
+
+Description: 
+    In the UI version of the application, it is possible to enter a fractional number in the Dependants field, even though this field should only accept whole numbers (integers). 
+    The number of dependants should be a non-negative integer, as dependants cannot be float. Allowing float numbers could lead to incorrect data entry and confusion for users.
+
+Steps to Reproduce:
+    1. Open the application UI at the following URL:
+        https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Benefits
+    2. Navigate to the form for adding or editing an employee.
+    3. In the Dependants field, enter a float number, such as 2.5.
+    4. Submit the form.
+    5. Observe that the system accepts the fractional number without validation errors.
+
+Expected Result: 
+    The Dependants field should only accept non-negative integers. 
+    The user should not be able to enter a fractional number, and an error message should be shown if an invalid input is provided.
+
+Actual Result: 
+    The system allows the user to enter and submit a fractional number in the Dependants field without any validation, which can lead to incorrect data entry.

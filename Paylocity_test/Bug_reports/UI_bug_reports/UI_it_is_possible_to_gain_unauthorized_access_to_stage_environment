@@ -1,0 +1,23 @@
+Priority: High
+Title: 
+    Unauthorized Access to Stage Environment via URL Manipulation
+
+Description: 
+    It is possible to gain access to the staging version of the application by modifying the URL to point to the staging environment. 
+    A user can change the URL from the production environment (https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Account/Login) to the staging environment (https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Stage/Account/Login) and successfully access it. 
+    Access to the test (stage) environment should be restricted, and users authenticated on the production environment should not have access to the staging environment. 
+    This creates a potential security risk as users may interact with the test environment when they should not have access.
+
+Steps to Reproduce:
+    1. Open the production version of the application at:
+        https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Account/Login
+    2. Modify the URL to point to the staging environment:
+        https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Stage/Account/Login
+    3. Observe that the same production account credentials provide access to the staging environment, even though this should not be allowed.
+
+Expected Result:
+    -Access to the staging environment should be restricted and require separate authentication or should be entirely inaccessible from production users.
+    -Users with access to the production environment should not be able to use their credentials to access the staging environment.
+
+Actual Result:
+    The user is able to access the staging environment by modifying the URL, and their production account credentials allow them to log in without restriction.

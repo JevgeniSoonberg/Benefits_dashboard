@@ -1,0 +1,24 @@
+Priority: Medium
+Title: 
+    Missing Error Handling in bad Requests: No JSON Response on Error
+
+Description: 
+    When sending f.e. a POST request with invalid data types (e.g., int in the firstName field), the server correctly returns a 405 Method Not Allowed status code. 
+    However, the server does not provide a JSON response with an error message, which makes it unclear to the user why the request failed. 
+    Proper error handling and descriptive JSON responses are needed to clarify the cause of the error.
+
+Steps to Reproduce:
+    1. Open Postman or any API testing tool.
+    2. Send a POST request to the employee creation endpoint(https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/employees) with the following request body:
+        {
+        "firstName": 123,
+        "lastName": "Employee4",
+        "dependants": 4
+        }
+    3. Observe the server returns a 405 Method Not Allowed status but does not include a JSON response that explains the error.
+
+Expected Result: 
+    The server should return a descriptive JSON response in the event of an error, clearly explaining why the request failed (e.g., invalid data type for firstName).
+
+Actual Result: 
+    The server returns a 405 status code with no JSON response, leaving the user without sufficient information about the cause of the error.

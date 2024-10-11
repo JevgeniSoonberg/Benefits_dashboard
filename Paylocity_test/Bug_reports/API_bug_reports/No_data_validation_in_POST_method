@@ -1,0 +1,24 @@
+Priority: High
+Title: 
+    Missing Data Validation in POST Requests: Special Characters and Numbers Allowed in First Name and Last Name Fields
+
+Description: 
+    The system does not validate the input data for firstName and lastName fields in the POST request when adding a new employee. 
+    It is possible to add an employee with special characters and numbers in these fields, which should likely be restricted to ensure data integrity.
+
+Steps to Reproduce:
+    1. Open Postman or any API testing tool.
+    2. Send a POST request to the employee creation endpoint(https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/employees) with the following request body:
+        {
+        "firstName": "!%^26",
+        "lastName": "Employee%№4",
+        "dependants": 4
+        }
+    3. Observe that the employee is successfully added despite the presence of special characters and numbers in the firstName and lastName fields.
+
+Expected Result: 
+    The system should validate the firstName and lastName fields to allow only valid characters (e.g., alphabetic characters). 
+    An appropriate error message should be returned if the input contains invalid characters such as numbers or special symbols.
+
+Actual Result: 
+    The employee is added successfully with special characters and numbers in their firstName and lastName.

@@ -1,0 +1,22 @@
+Priority: Medium
+Title: 
+    Inconsistent Spelling of "Dependants" Between API and UI
+
+Description: 
+    There is an inconsistency in the spelling of the word "Dependants" between the API and the UI. 
+    In the API, the column is labeled as "dependants," while in the UI it is labeled as "Dependents." 
+    This discrepancy can lead to confusion when using both the API and the UI, as users may not immediately realize that the two terms refer to the same data. 
+    To avoid confusion and improve consistency, the spelling should be unified across both the API and UI.
+
+Steps to Reproduce:
+    1. Open the API documentation or inspect the API response where the "dependants" field is present.
+    2. Observe that the field for the number of dependants is spelled as "dependants" in the API.
+    3. Open the UI (https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Benefits) and inspect the field for the number of dependents.
+    4. Observe that in the UI, the field is labeled as "Dependents" instead of "Dependants."
+
+Expected Result:
+    The spelling of the term "Dependants" should be consistent across both the API and UI to avoid confusion. 
+    It should either be standardized as "Dependants" or "Dependents" in both places.
+
+Actual Result:
+    The API uses "dependants," while the UI uses "Dependents," causing inconsistency and potential confusion for users interacting with both the API and the UI.

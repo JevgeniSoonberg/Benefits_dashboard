@@ -1,0 +1,23 @@
+Priority: Medium
+Title: 
+    Deleting a Non-Existent Employee Returns 200 OK Instead of an Error
+
+Description: 
+    When attempting to delete a non-existent employee by providing an invalid or non-existent ID in the DELETE request, the server responds with a 200 OK status. 
+    However, this is misleading, as the employee with the provided ID does not exist. 
+    The server should return a more appropriate status code, such as 404 Not Found, with a message indicating that the employee could not be found.
+
+Steps to Reproduce:
+    1. Open Postman or any API testing tool.
+    2. Send a DELETE request to the following endpoint with a non-existent employee ID:
+        https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/employees/a5903424-273e-41d2-a573-877a9fe63843
+    3. Observe that the server responds with a 200 OK status, even though the employee with the specified ID does not exist.
+
+Expected Result: 
+    The server should return a 404 Not Found status, along with a descriptive message such as:
+        {
+        "error": "Employee not found"
+        }
+
+Actual Result: 
+    The server returns a 200 OK status, incorrectly indicating that the employee was deleted, even though the employee does not exist.

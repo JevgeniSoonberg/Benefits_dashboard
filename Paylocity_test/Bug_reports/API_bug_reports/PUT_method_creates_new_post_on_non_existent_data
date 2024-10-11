@@ -1,0 +1,28 @@
+Priority: High
+Title: 
+    PUT Method Creates a New Employee Instead of Returning an Error for Non-Existent Records
+
+Description: 
+    When attempting to update an employee using the PUT method with non-existent or incorrect data (e.g., an invalid or incorrect id, firstName, or lastName), the system creates a new employee record instead of returning an error indicating that the employee does not exist. 
+    This behavior is unexpected, as PUT should only update existing records. 
+    If the employee does not exist, the server should return an error message stating that the record cannot be found.
+
+Steps to Reproduce:
+    1. Open Postman or any API testing tool.
+    2. Send a PUT request with an id that does not correspond to any existing employee or with mismatched data:
+        {
+        "id": "e987a85e-8364-461a-bcd2-af65adaf30e6",
+        "firstName": "test",
+        "lastName": "Employee"
+        }
+    3. Observe that instead of returning an error, the system creates a new employee record with the specified data.
+
+Expected Result: 
+    The server should return an error message such as:
+        {
+        "error": "Employee not found. Cannot update non-existent employee."
+        }
+    The PUT request should only update existing records and not create new ones.
+
+Actual Result: 
+    The server returns a 200 OK status and creates a new employee record with the provided data, even though no employee with the specified id exists.

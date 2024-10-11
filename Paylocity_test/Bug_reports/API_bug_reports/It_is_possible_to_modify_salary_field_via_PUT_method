@@ -1,0 +1,29 @@
+Priority: High
+Title: 
+    Ability to Modify Salary Field via PUT Request: Which may cause negative Net Pay result (No Validation or Error for Negative Net Pay)
+
+Description: 
+    The salary field can be modified using the PUT request. 
+    This allows users to set unrealistic or incorrect salary values, including values that result in negative net pay. 
+    There is no validation or error when setting a salary that results in negative net pay too.
+
+Steps to Reproduce:
+    1. Open Postman or any API testing tool.
+    2. Send a PUT request to update an existing employee's data and include the salary field with a reduced value:
+        {
+        "id": "e987a85e-8364-461a-bcd2-af65adaf30e6",
+        "firstName": "test",
+        "lastName": "Employee",
+        "dependants": 0,
+        "salary": 50 // Unrealistically low salary
+        }
+    3. Observe that the system accepts the PUT request and updates the salary.
+    4. As a result, net pay may become negative if the salary is too low compared to the deductions (benefits cost).
+
+Expected Result:
+    -The salary field should not be modifiable via the PUT request. The server should return an error message if the salary field is included in the request.
+    -If salary modification is allowed, the system should validate that the salary does not result in negative net pay and return an error if this occurs.
+
+Actual Result:
+    -The system allows the modification of the salary field, even though it should not be editable.
+    -No validation is performed for negative net pay, which can occur if the salary is set too low compared to the employee's benefits deductions.

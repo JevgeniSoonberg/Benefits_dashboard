@@ -1,0 +1,22 @@
+Priority: High
+Title: 
+    Usage of document.write in UI Poses Potential Security and Performance Risks
+
+Description: 
+    The application’s UI contains the usage of the document.write method, which is generally considered outdated and poses potential security and performance risks. 
+    Specifically, document.write is used for dynamically loading external resources (such as scripts and styles). 
+    This method can introduce vulnerabilities, such as Cross-Site Scripting (XSS), and negatively impact page loading performance.
+    More modern and secure alternatives, such as appendChild() or insertBefore(), should be used to dynamically add elements to the DOM.
+
+Steps to Reproduce:
+    1. Open the UI of the application.
+    2. Inspect the source code and locate instances where document.write is used to load external resources. Example:
+        document.write("\u003Cscript src=\u0022/Prod/lib/jquery/dist/jquery.min.js\u0022 crossorigin=\u0022anonymous\u0022 integrity=\u0022...
+    3. Observe that the method document.write is used for dynamically loading content.
+
+Expected Result:
+    document.write should be avoided due to its potential for introducing security vulnerabilities and performance issues. 
+    More secure and efficient alternatives, such as DOM manipulation via appendChild() or insertBefore(), should be used.
+
+Actual Result:
+    document.write is used to load external resources, which can expose the application to potential security risks (e.g., XSS attacks) and degrade performance by blocking rendering.

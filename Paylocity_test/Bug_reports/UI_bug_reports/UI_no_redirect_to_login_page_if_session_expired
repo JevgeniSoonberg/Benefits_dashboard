@@ -1,0 +1,23 @@
+Priority: Medium
+Title: 
+    No Redirection to Login Page Upon Session Expiration in UI
+
+Description: 
+    When a user's session expires in the UI version of the application, the system does not automatically redirect the user to the login page. 
+    Instead, the user remains on the current page (https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Benefits), which can lead to confusion, as the user is still on a restricted page without the ability to perform any actions. 
+    The user should be redirected to the login page (https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Account/LogIn) when the session expires.
+
+Steps to Reproduce:
+    1. Open the application UI at the following URL:
+        https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Benefits
+    2. Wait for the session to expire.
+    3. Observe that the application does not redirect to the login page.
+    4. Attempt to interact with the page (e.g., submit a form or access data).
+    5. Notice that actions cannot be performed due to the expired session, but no automatic redirection occurs.
+
+Expected Result:
+    When the session expires, the application should automatically redirect the user to the login page at:
+        https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Account/LogIn
+
+Actual Result:
+    The user remains on the Benefits page (https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Benefits) after the session expires, without being notified or redirected to log in again.

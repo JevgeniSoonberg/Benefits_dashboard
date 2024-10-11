@@ -1,0 +1,22 @@
+Priority: High
+Title: 
+    Login Page Crashes with 405 Error When Invalid Credentials Are Submitted
+
+Description: 
+    On the login page (https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Account/Login), if a user submits invalid credentials, the page crashes with a 405 Method Not Allowed error. 
+    Instead of displaying an appropriate error message (e.g., "Invalid username or password" or "non-existent user"), the page becomes unresponsive and displays an HTTP error. 
+    This behavior disrupts the login process and provides no useful feedback to the user.
+
+Steps to Reproduce:
+    1. Open the login page at:
+        https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Account/Login
+    2. Enter invalid credentials (e.g., incorrect username and password).
+    3. Click the Log In button.
+    4. Observe that the page crashes and returns a 405 Method Not Allowed error instead of displaying a proper error message.
+
+Expected Result:
+    The page should handle invalid login attempts gracefully by displaying an appropriate error message such as "Invalid username or password" or "non-existent user". 
+    The page should not crash or return an HTTP error.
+
+Actual Result:
+    The page crashes and returns a 405 Method Not Allowed error with no feedback to the user, preventing further interaction.

@@ -1,0 +1,28 @@
+Priority: Low
+Title: 
+    Unnecessary Fields (ID, Salary, Gross) Accepted in POST Request Without Validation
+
+Description: 
+    When sending a POST request to create a new employee, it is possible to include fields like id, salary, and gross, which should be generated or calculated by the system. 
+    Although the system correctly overrides these values with the appropriate ones in the response, there is no validation or error message indicating that these fields should not be provided in the request. 
+    This can lead to confusion and potential misuse.
+
+Steps to Reproduce:
+    1. Open Postman or any API testing tool.
+    2.Send a POST request to the employee creation endpoint with the following request body:
+        {
+        "id": "f7f322d5-f149-47c4-95b0-35854a33e466",
+        "firstName": "Ne1",
+        "lastName": "Employee4",
+        "dependants": 0,
+        "salary": 50,
+        "gross": 20
+        }
+    3. Observe that the server returns a 200 OK status and creates the employee successfully, but ignores the id, salary, and gross fields, returning the correct values.
+
+Expected Result: 
+    The server should reject the request or ignore fields like id, salary, and gross in the request body and return an error or warning message indicating that these fields are not allowed to be set by the user. 
+    The response should clarify that these values will be generated or calculated by the system.
+
+Actual Result: 
+    The server returns a 200 OK status and correctly assigns the id, salary, and gross values, but does not provide any validation or warning that these fields should not be included in the request body.

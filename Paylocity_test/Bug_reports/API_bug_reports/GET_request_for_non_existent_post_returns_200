@@ -1,0 +1,22 @@
+Priority: Medium
+Title: 
+    GET Request for Non-Existent Employee Returns 200 OK Instead of 404 Not Found
+
+Description: 
+    When performing a GET request with a non-existent employee ID, the server responds with a 200 OK status, even though the employee does not exist. 
+    The server should return a 404 Not Found status along with a message indicating that the employee could not be found, rather than returning 200 OK for a non-existent resource.
+
+Steps to Reproduce:
+    1. Open Postman or any API testing tool.
+    2. Send a GET request with a non-existent employee ID:
+        GET https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/employees/bdaa0e7d-9282-4aeb-b077-820ea21de226
+    3. Observe that the server returns a 200 OK status, even though the employee does not exist.
+
+Expected Result: 
+    The server should return a 404 Not Found status with a descriptive error message, such as:
+        {
+        "error": "Employee not found"
+        }
+
+Actual Result: 
+    The server returns a 200 OK status with an empty or incorrect response, providing no indication that the employee does not exist.

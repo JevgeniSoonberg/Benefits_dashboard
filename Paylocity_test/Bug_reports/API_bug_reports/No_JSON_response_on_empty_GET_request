@@ -1,0 +1,23 @@
+Priority: Low
+Title: 
+    Missing Descriptive Response When No Records Exist: Empty Array Returned in GET Request
+
+Description: 
+    When the employee table is empty and no records are present, sending a GET request to retrieve the employee list returns an empty array ([]). 
+    However, there is no descriptive message indicating that there are no records in the database. 
+    A clearer response with a message such as "No employees found" would provide a better user experience and more context.
+
+Steps to Reproduce:
+    1. Ensure the employee table is empty (no records). (You can use "API_all_posts_delete.py python script to empty the table")
+    2. Open Postman or any API testing tool.
+    3. Send a GET request to the employee list retrieval endpoint(https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/employees).
+    4. Observe the response is an empty array ([]).
+
+Expected Result: 
+    The server should return a descriptive JSON response, such as:
+        {
+        "message": "No employees found"
+        }
+
+Actual Result: 
+    The server returns an empty array ([]), which does not provide clear information to the user about the lack of records.

@@ -1,0 +1,30 @@
+Priority: High
+Title: 
+    Excessive Decimal Places in benefitsCost and net Fields in GET Responses
+
+Description: 
+    When performing a GET request to retrieve employee data, the benefitsCost field is returned with 5 decimal places and the net field is returned with 4 decimal places. 
+    Since these fields represent monetary values, it is expected that they should be limited to 2 decimal places. 
+    This inconsistency could cause confusion and lead to potential rounding errors. 
+    The values in the user interface (UI) are correctly rounded to 2 decimal places, but the API response does not reflect this.
+
+Steps to Reproduce:
+    1. Open Postman or any API testing tool.
+    2. Send a GET request to retrieve employee data:
+        https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/employees
+    3. Observe the values in the benefitsCost and net fields, which are returned with 5 and 4 decimal places, respectively.
+
+Expected Result: 
+    The benefitsCost and net fields should be rounded to 2 decimal places, consistent with standard monetary representation. Example:
+        {
+        "benefitsCost": 38.46,
+        "net": 1961.54
+        }
+
+Actual Result: 
+    The benefitsCost field is returned with 5 decimal places, and the net field is returned with 4 decimal places:
+        {
+        "benefitsCost": 38.46154,
+        "net": 1961.5385
+        }
+

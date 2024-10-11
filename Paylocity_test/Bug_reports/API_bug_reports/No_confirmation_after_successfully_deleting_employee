@@ -1,0 +1,23 @@
+Priority: Low
+Title: 
+    Empty Response When Deleting an Employee: No Confirmation Message Returned
+
+Description: 
+    When successfully deleting an employee, the server responds with a 200 OK status code but provides an empty JSON response. 
+    There is no confirmation message indicating that the employee was deleted successfully, which can lead to confusion. 
+    A descriptive message should be returned to confirm the successful deletion of the employee.
+
+Steps to Reproduce:
+    1. Open Postman or any API testing tool.
+    2. Send a DELETE request to delete an existing employee using their ID:
+        DELETE https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/employees/{employeeID}
+    3. Observe that the server responds with a 200 OK status but no JSON body is returned.
+
+Expected Result: 
+    The server should return a confirmation message in the JSON response, such as:
+        {
+        "message": "Employee successfully deleted"
+        }
+        
+Actual Result: 
+    The server returns a 200 OK status, but the response body is completely empty, providing no confirmation that the employee was deleted.

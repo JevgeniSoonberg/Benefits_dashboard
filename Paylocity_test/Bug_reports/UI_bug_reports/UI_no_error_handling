@@ -1,0 +1,22 @@
+Priority: High
+Title: 
+    Missing Error Handling in UI: No Error Messages for Empty Fields or Invalid Dependants Range
+
+Description: 
+    In the UI version of the application, there is no error handling for invalid data input, such as leaving required fields empty or entering a value for Dependants outside the allowed range of 0-32. 
+    While the form submission fails in these cases, no error or warning messages are displayed to inform the user about the issues, making it unclear why the form cannot be submitted.
+
+Steps to Reproduce:
+    1. Open the application UI at the following URL:
+        https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Benefits
+    2. Navigate to the form for adding or editing an employee.
+    3. Leave one or more fields (e.g., First Name, Last Name, Dependants) empty or enter an invalid value for Dependants (e.g., -1 or 33).
+    4. Try to submit the form.
+    5. Observe that the form does not submit, but no error or warning message is displayed to the user.
+
+Expected Result:
+    -The form should display error messages when required fields are left empty or when invalid data is entered (e.g., a value for Dependants outside the allowed range of 0-32).
+    -Error handling should be implemented to provide immediate feedback to the user about the specific issues that need to be corrected before submission.
+
+Actual Result:
+    The form does not submit with invalid input, but no error or warning message is shown to the user, leaving them unaware of why the submission failed.

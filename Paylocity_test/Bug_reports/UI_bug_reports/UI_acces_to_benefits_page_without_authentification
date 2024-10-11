@@ -1,0 +1,22 @@
+Priority: Medium
+Title: 
+    Access to Benefits Page Without Authentication via "Paylocity Benefits Dashboard" Link
+
+Description: 
+    On the login page (https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Account/Login), 
+    clicking on the "Paylocity Benefits Dashboard" link redirects the user to the Benefits page (https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Benefits) without requiring authentication. 
+    While the user cannot interact with the page, they should not be able to navigate away from the login page until they have successfully logged in. 
+    This creates confusion and a potential security issue, as users can reach restricted pages without proper authentication.
+
+Steps to Reproduce:
+    1. Open the login page at:
+        https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Account/Login
+    2. Click on the "Paylocity Benefits Dashboard" link at the top of the page:
+        <a class="navbar-brand" href="/Prod/Benefits">Paylocity Benefits Dashboard</a>
+    3. Observe that the user is redirected to the Benefits page (https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Benefits) without logging in, although they cannot interact with the page.
+
+Expected Result:
+    The user should remain on the login page until they have successfully authenticated with valid credentials.
+    Clicking the "Paylocity Benefits Dashboard" link should not allow navigation to the Benefits page without logging in.
+Actual Result:
+    The user is redirected to the Benefits page without authentication, even though they are not logged in and cannot interact with the page.

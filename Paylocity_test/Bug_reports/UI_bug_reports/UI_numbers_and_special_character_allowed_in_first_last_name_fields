@@ -1,0 +1,23 @@
+Priority: High
+Title: 
+    No Validation for First Name and Last Name Fields: Numeric and Special Characters Allowed
+
+Description: 
+    In the UI version of the application, there is no validation for the First Name and Last Name fields. 
+    Users can enter invalid characters, such as numbers and special symbols, which should not be allowed in names. 
+    Employee names should only consist of alphabetic characters. Allowing invalid characters could result in incorrect data entry and compromise the integrity of the employee data.
+
+Steps to Reproduce:
+    1. Open the application UI at the following URL:
+        https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Benefits
+    2. Navigate to the form for adding or editing an employee.
+    3. In the First Name and Last Name fields, enter invalid characters, such as numbers (123) or special characters (!@#$).
+    4. Submit the form.
+    5. Observe that the system accepts the invalid names without any validation errors.
+
+Expected Result: 
+    The First Name and Last Name fields should validate the input to ensure that only alphabetic characters are allowed. 
+    An error message should appear if the user tries to enter numbers or special characters.
+
+Actual Result: 
+    The system allows the user to submit invalid names containing numbers or special characters without any validation, resulting in incorrect data entry.

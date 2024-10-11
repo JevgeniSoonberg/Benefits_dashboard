@@ -1,0 +1,24 @@
+Priority: High
+Title: 
+    Stage and Production Environments Share Data: Changes in One Environment Reflect in the Other
+
+Description: 
+    The Stage and Production environments of the application are not properly isolated, resulting in shared data between them. 
+    Any changes made in the Stage environment are reflected in the Production environment, and vice versa. 
+    The Stage environment should be a separate test environment with its own isolated data, allowing for testing without affecting live production data. 
+    This issue poses a significant risk, as testing activities could unintentionally alter critical production data.
+
+Steps to Reproduce:
+    1. Open the Stage version of the application at:
+        https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Stage/Benefits
+    2. Add or modify employee data.
+    3. Open the Production version of the application at:
+        https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Benefits
+    4. Observe that the changes made in the Stage environment are reflected in the Production environment.
+
+Expected Result:
+    -The Stage environment should have separate data, completely isolated from the Production environment. Any changes made in one environment should not affect the other.
+    -Testing activities in the Stage environment should not reflect on Production data.
+
+Actual Result:
+    Changes made in the Stage environment are visible in the Production environment, and changes made in Production are also visible in Stage.
